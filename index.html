@@ -197,7 +197,6 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
         }
         
         .card:hover {
@@ -220,6 +219,22 @@
         
         .card p {
             color: #bdc3c7;
+            margin-bottom: 15px;
+        }
+        
+        .btn-link {
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-link:hover {
+            color: var(--success);
+            transform: translateX(5px);
         }
         
         .concepts {
@@ -412,180 +427,6 @@
             font-size: 0.9rem;
         }
         
-        /* Páginas de detalle */
-        .detail-page {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            overflow-y: auto;
-            padding: 20px;
-        }
-        
-        .detail-content {
-            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            position: relative;
-            animation: slideUp 0.5s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .close-btn:hover {
-            background: #c0392b;
-            transform: rotate(90deg);
-        }
-        
-        .detail-header {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .detail-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, var(--secondary), var(--success));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .detail-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: center;
-        }
-        
-        .detail-text {
-            padding-right: 20px;
-        }
-        
-        .detail-text h3 {
-            color: var(--secondary);
-            margin: 25px 0 15px;
-            font-size: 1.5rem;
-        }
-        
-        .detail-text h3:first-child {
-            margin-top: 0;
-        }
-        
-        .detail-text p {
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-        
-        .detail-text ul {
-            margin: 15px 0 15px 20px;
-        }
-        
-        .detail-text li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 10px;
-        }
-        
-        .detail-visual {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-        
-        .info-graphic {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .info-graphic h4 {
-            margin-bottom: 15px;
-            color: var(--warning);
-        }
-        
-        .graphic-placeholder {
-            height: 200px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #bdc3c7;
-            font-style: italic;
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-        
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-            margin: 20px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--secondary);
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 30px;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -33px;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: var(--success);
-        }
-        
-        .timeline-year {
-            font-weight: bold;
-            color: var(--warning);
-            margin-bottom: 5px;
-        }
-        
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -609,14 +450,6 @@
             
             .section-title h2 {
                 font-size: 2rem;
-            }
-            
-            .detail-body {
-                grid-template-columns: 1fr;
-            }
-            
-            .detail-text {
-                padding-right: 0;
             }
         }
     </style>
@@ -655,23 +488,23 @@
                 <h2>¿Qué es el Teleproceso?</h2>
             </div>
             <div class="cards">
-                <div class="card" onclick="openDetail('definicion')">
+                <div class="card">
                     <i class="fas fa-network-wired"></i>
                     <h3>Definición</h3>
                     <p>El teleproceso se refiere al procesamiento de datos a distancia, donde los terminales se conectan a un computador central a través de líneas de comunicación.</p>
-                    <p class="btn-link">Haz clic para más información →</p>
+                    <a href="definicion-teleproceso.html" class="btn-link">Leer más <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="card" onclick="openDetail('evolucion')">
+                <div class="card">
                     <i class="fas fa-history"></i>
                     <h3>Evolución</h3>
                     <p>Desde los sistemas batch hasta los sistemas en tiempo real, el teleproceso ha evolucionado para satisfacer las necesidades de procesamiento remoto.</p>
-                    <p class="btn-link">Haz clic para más información →</p>
+                    <a href="evolucion.html" class="btn-link">Leer más <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="card" onclick="openDetail('aplicaciones')">
+                <div class="card">
                     <i class="fas fa-globe-americas"></i>
                     <h3>Aplicaciones</h3>
                     <p>Se utiliza en reservaciones de aerolíneas, sistemas bancarios, control de inventarios y cualquier sistema que requiera procesamiento centralizado con acceso remoto.</p>
-                    <p class="btn-link">Haz clic para más información →</p>
+                    <a href="aplicaciones.html" class="btn-link">Leer más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -829,137 +662,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- Páginas de detalle -->
-    <div id="definicion" class="detail-page">
-        <div class="detail-content">
-            <button class="close-btn" onclick="closeDetail('definicion')">&times;</button>
-            <div class="detail-header">
-                <h2>Definición de Teleproceso</h2>
-                <p>Concepto fundamental en sistemas distribuidos</p>
-            </div>
-            <div class="detail-body">
-                <div class="detail-text">
-                    <h3>¿Qué es el Teleproceso?</h3>
-                    <p>El teleproceso es una técnica que permite el procesamiento de datos a distancia, donde terminales remotas se conectan a un computador central mediante líneas de comunicación. Este sistema permite que usuarios en ubicaciones geográficamente dispersas accedan y utilicen los recursos de un sistema centralizado.</p>
-                    
-                    <h3>Características Principales</h3>
-                    <ul>
-                        <li><strong>Procesamiento centralizado:</strong> Todos los datos se procesan en un computador principal</li>
-                        <li><strong>Acceso remoto:</strong> Los usuarios interactúan desde terminales distantes</li>
-                        <li><strong>Tiempo compartido:</strong> Múltiples usuarios pueden acceder simultáneamente</li>
-                        <li><strong>Comunicación bidireccional:</strong> Flujo de datos en ambos sentidos</li>
-                    </ul>
-                    
-                    <h3>Componentes del Sistema</h3>
-                    <p>Un sistema de teleproceso está compuesto por:</p>
-                    <ul>
-                        <li>Terminales remotas</li>
-                        <li>Líneas de comunicación</li>
-                        <li>Módems</li>
-                        <li>Computador central</li>
-                        <li>Software de aplicación</li>
-                    </ul>
-                </div>
-                <div class="detail-visual">
-                    <div class="info-graphic">
-                        <h4>Arquitectura de Teleproceso</h4>
-                        <div class="graphic-placeholder">
-                            <i class="fas fa-project-diagram" style="font-size: 3rem; color: #3498db;"></i>
-                        </div>
-                        <p>Representación de la conexión entre terminales y computador central</p>
-                    </div>
-                    <div class="info-graphic">
-                        <h4>Ventajas del Teleproceso</h4>
-                        <div class="graphic-placeholder">
-                            <i class="fas fa-chart-line" style="font-size: 3rem; color: #2ecc71;"></i>
-                        </div>
-                        <p>Centralización, eficiencia y acceso remoto a información</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="evolucion" class="detail-page">
-        <div class="detail-content">
-            <button class="close-btn" onclick="closeDetail('evolucion')">&times;</button>
-            <div class="detail-header">
-                <h2>Evolución del Teleproceso</h2>
-                <p>Desde sistemas batch hasta la nube</p>
-            </div>
-            <div class="detail-body">
-                <div class="detail-text">
-                    <h3>Línea de Tiempo Histórica</h3>
-                    
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-year">1960s</div>
-                            <p><strong>Sistemas Batch:</strong> Procesamiento por lotes, sin interacción en tiempo real</p>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">1970s</div>
-                            <p><strong>Primeros sistemas de teleproceso:</strong> Terminales conectadas a mainframes</p>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">1980s</div>
-                            <p><strong>Computación cliente-servidor:</strong> Distribución de procesamiento</p>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">1990s</div>
-                            <p><strong>Internet y web:</strong> Acceso global a sistemas remotos</p>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">2000s</div>
-                            <p><strong>Computación en la nube:</strong> Servicios bajo demanda a través de Internet</p>
-                        </div>
-                    </div>
-                    
-                    <h3>Cambios Tecnológicos</h3>
-                    <p>La evolución del teleproceso ha estado marcada por importantes avances tecnológicos:</p>
-                    <ul>
-                        <li><strong>Velocidad de transmisión:</strong> De 300 bps a varios Gbps</li>
-                        <li><strong>Medios de comunicación:</strong> De líneas telefónicas a fibra óptica y wireless</li>
-                        <li><strong>Capacidad de procesamiento:</strong> De mainframes a arquitecturas distribuidas</li>
-                        <li><strong>Interfaz de usuario:</strong> De terminales de texto a aplicaciones web ricas</li>
-                    </ul>
-                </div>
-                <div class="detail-visual">
-                    <div class="info-graphic">
-                        <h4>Evolución Tecnológica</h4>
-                        <div class="graphic-placeholder">
-                            <i class="fas fa-laptop-code" style="font-size: 3rem; color: #f39c12;"></i>
-                        </div>
-                        <p>De terminales simples a sistemas en la nube</p>
-                    </div>
-                    <div class="info-graphic">
-                        <h4>Impacto en la Sociedad</h4>
-                        <div class="graphic-placeholder">
-                            <i class="fas fa-users" style="font-size: 3rem; color: #9b59b6;"></i>
-                        </div>
-                        <p>Transformación en negocios, educación y comunicación</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="aplicaciones" class="detail-page">
-        <div class="detail-content">
-            <button class="close-btn" onclick="closeDetail('aplicaciones')">&times;</button>
-            <div class="detail-header">
-                <h2>Aplicaciones del Teleproceso</h2>
-                <p>Usos en la vida real y sectores industriales</p>
-            </div>
-            <div class="detail-body">
-                <div class="detail-text">
-                    <h3>Sistemas de Reservaciones</h3>
-                    <p>Las aerolíneas fueron de los primeros en adoptar sistemas de teleproceso para gestionar reservas de vuelos, hoteles y alquiler de coches. Estos sistemas requieren:</p>
-                    <ul>
-                        <li>Acceso en tiempo real a bases de datos centralizadas</li>
-                        <li>Actualización inmediata de disponibilidad</li>
-                        <li>Transacciones seguras y confiables</li>
-                        <li>Interfaz amigable para agentes de viajes</li>
-                    </ul>
-                    
-                    <h3>Sistemas Bancarios</
+</body>
+</html>
